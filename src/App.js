@@ -16,7 +16,7 @@ function App() {
     <div>
       <ul>
         {cars.map((car) => (
-          <Car carObj={car} key={car.name}
+          <Car carObj={car} key={car.vehicle_id}
           />
         ))}
       </ul>
@@ -27,16 +27,16 @@ function App() {
 function Car({ carObj }) {
   return (
     <div>
+            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
             <p>{carObj.advert_classification}</p>
-            <p>{carObj.odometer_units}</p>
-            <p>{carObj.odometer_value}</p>
-            <p>{carObj.transmission}</p>
-            <p>{carObj.plate}</p>
-            <p>{carObj.make}</p>
-            <p>{carObj.model}</p>
-            <p>{carObj.derivative}</p>
+            <p>{carObj.odometer_value} {carObj.odometer_units}</p>
+            <p>{carObj.plate} {carObj.make}</p>
             <p>{carObj.body_type}</p>
-            <p>{carObj.fuel_type}</p>
+            <p>{carObj.derivative}</p>
+            <p>{carObj.transmission}</p>
+            <p>{carObj.model}</p>
+            <p>{carObj.monthly_payment} /mo ({carObj.monthly_finance_type})</p>
+            <p>£{carObj.price}</p>
     </div>
   );
 }
