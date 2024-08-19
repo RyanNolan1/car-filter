@@ -14,10 +14,9 @@ function App() {
 
   return (
     <div>
-      <ul>
+      <ul className="car-grid">
         {cars.map((car) => (
-          <Car carObj={car} key={car.vehicle_id}
-          />
+          <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
     </div>
@@ -26,17 +25,27 @@ function App() {
 
 function Car({ carObj }) {
   return (
-    <div>
-            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
-            <p>{carObj.advert_classification}</p>
-            <p>{carObj.odometer_value} {carObj.odometer_units}</p>
-            <p>{carObj.plate} {carObj.make}</p>
-            <p>{carObj.body_type}</p>
-            <p>{carObj.derivative}</p>
-            <p>{carObj.transmission}</p>
-            <p>{carObj.model}</p>
-            <p>{carObj.monthly_payment} /mo ({carObj.monthly_finance_type})</p>
-            <p>£{carObj.price}</p>
+    <div class="car">
+      <div class="car-image-features">
+        <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+        <p className="classification">{carObj.advert_classification}</p>
+        <p>
+          {carObj.odometer_value} {carObj.odometer_units}
+        </p>
+        <p>{carObj.body_type}</p>
+        <p>{carObj.transmission}</p>
+      </div>
+      <div className="car-details">
+        <p>
+          {carObj.plate} {carObj.make}
+        </p>
+        <p>{carObj.derivative}</p>
+        <p>{carObj.model}</p>
+        <p>
+          {carObj.monthly_payment} /mo ({carObj.monthly_finance_type})
+        </p>
+        <p>£{carObj.price}</p>
+      </div>
     </div>
   );
 }

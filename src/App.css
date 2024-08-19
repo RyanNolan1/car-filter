@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  max-width: 64.3125rem;
+  margin: 0 auto;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
+}
+
+.car {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+}
+
+.car-image-features img {
+  width: 100%;
+}
+
+.car-details {
+  padding: 1rem;
+}
+
