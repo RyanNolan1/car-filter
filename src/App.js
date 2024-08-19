@@ -12,11 +12,31 @@ function App() {
       .then((data) => setCars(data.data));
   }, []);
 
-  console.log(cars)
-
   return (
     <div>
-      <ul></ul>
+      <ul>
+        {cars.map((car) => (
+          <Car carObj={car} key={car.name}
+          />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function Car({ carObj }) {
+  return (
+    <div>
+            <p>{carObj.advert_classification}</p>
+            <p>{carObj.odometer_units}</p>
+            <p>{carObj.odometer_value}</p>
+            <p>{carObj.transmission}</p>
+            <p>{carObj.plate}</p>
+            <p>{carObj.make}</p>
+            <p>{carObj.model}</p>
+            <p>{carObj.derivative}</p>
+            <p>{carObj.body_type}</p>
+            <p>{carObj.fuel_type}</p>
     </div>
   );
 }
