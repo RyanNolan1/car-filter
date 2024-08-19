@@ -67,3 +67,12 @@ body {
   padding: 1rem;
   min-height: 7.125rem;
 }
+
+.derivative {
+    color:#55595D;
+    font-size:0.75rem;
+}
+
+.monthly-payment {
+    font-weight:600;
+}

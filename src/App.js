@@ -43,12 +43,11 @@ function Car({ carObj }) {
       </div>
       <div className="car-details">
         <p>
-          {carObj.plate} {carObj.make}
+          {carObj.plate} {carObj.make} {carObj.model}
         </p>
-        <p>{carObj.derivative}</p>
-        <p>{carObj.model}</p>
+        <p className="derivative">{carObj.derivative}</p>
         <p>
-          {carObj.monthly_payment} /mo ({carObj.monthly_finance_type})
+          <span className="monthly-payment">£{carObj.monthly_payment}</span> /mo ({carObj.monthly_finance_type})
         </p>
         <p>£{carObj.price}</p>
       </div>
