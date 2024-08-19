@@ -26,14 +26,20 @@ function App() {
 function Car({ carObj }) {
   return (
     <div class="car">
-      <div class="car-image-features">
-        <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+      <div
+        class="car-image-container"
+        style={{
+          backgroundImage: `url(${carObj.media_urls[0].thumb})`,
+        }}
+      >
         <p className="classification">{carObj.advert_classification}</p>
+        <div className="car-features">
         <p>
           {carObj.odometer_value} {carObj.odometer_units}
         </p>
         <p>{carObj.body_type}</p>
         <p>{carObj.transmission}</p>
+        </div>
       </div>
       <div className="car-details">
         <p>

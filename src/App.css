@@ -17,14 +17,38 @@
 .car {
   border-radius: 15px;
   overflow: hidden;
-  box-shadow: 0px 3px 15px rgba(0,0,0,0.2);
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+
 }
 
-.car-image-features img {
-  width: 100%;
+.car-image-container {
+  padding: 1rem;
+  min-height: 15.625rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car-features {
+  display: flex;
+  gap: 0.5rem;
+  bottom: 0;
+}
+
+.classification,
+.car-features p {
+  color: white;
+  background-color: #3f3a50;
+  padding: 0.5rem;
+  border-radius: 8px;
+  border:1px solid rgba(255, 255, 255, 0.2);
+  width: fit-content;
 }
 
 .car-details {
   padding: 1rem;
+  min-height: 7.125rem;
 }
-
