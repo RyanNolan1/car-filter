@@ -33,12 +33,13 @@ function Car({ carObj }) {
         }}
       >
         <p className="classification">{carObj.advert_classification}</p>
-        <div className="car-features">
+        <div className="key-features">
         <p>
-          {carObj.odometer_value} {carObj.odometer_units}
+        {carObj.key_features[0]}
         </p>
-        <p>{carObj.body_type}</p>
-        <p>{carObj.transmission}</p>
+        <p>{carObj.key_features[1]}</p>
+        <p>{carObj.key_features[2]}</p>
+        <p>{carObj.key_features[3]}</p>
         </div>
       </div>
       <div className="car-details">

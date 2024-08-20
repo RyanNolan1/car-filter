@@ -38,14 +38,14 @@ body {
   justify-content: space-between;
 }
 
-.car-features {
+.key-features {
   display: flex;
   gap: 0.5rem;
   bottom: 0;
 }
 
 .classification,
-.car-features p {
+.key-features p {
   color: white;
   background-color: #3f3a50;
   padding: 0.25rem 0.5rem;
@@ -59,7 +59,7 @@ body {
   font-weight: 400;
 }
 
-.car-features p {
+.key-features p {
   font-size: 0.75rem;
 }
 
