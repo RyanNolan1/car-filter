@@ -12,6 +12,19 @@ body {
   padding:0 1rem;
 }
 
+.filter {
+  margin:0 auto;
+  max-width: 64.3125rem;
+  padding:2rem 0;
+  display:flex;
+  justify-content: space-between
+}
+
+.car-count-buttons {
+  display:flex;
+  gap:0.5rem;
+}
+
 .car-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

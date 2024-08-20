@@ -16,6 +16,7 @@ function App() {
 
   return (
     <div>
+      <Filter />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
@@ -104,6 +105,23 @@ function Car({ carObj }) {
       </div>
     </div>
   );
+}
+
+function Filter() {
+  return (
+    <nav className="filter">
+      <div className="car-count-buttons">
+      <p>Showing 339 Cars</p>
+      <button>All</button>
+      <button>Used</button>
+      <button>New</button>
+      <button>Offers</button>
+      </div>
+      <select>
+      <option value="lowest-price">Lowest price</option>
+      </select>
+    </nav>
+  )
 }
 
 export default App;
