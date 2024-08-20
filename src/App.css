@@ -71,13 +71,32 @@ body {
     text-transform: lowercase;
 }
 
-.car-details {
+.car-details-container {
   padding: 1rem;
   min-height: 7.125rem;
+  gap:1rem;
+  display:flex;
+  flex-direction: column;
 }
 
 .derivative {
     color:#55595D;
+    font-size:0.75rem;
+}
+
+.car-details-derivative {
+    display:flex;
+    flex-direction: column;
+    gap:0.25rem;
+}
+
+.car-cost-container {
+    display:flex;
+    flex-direction:column;
+    gap:0.25rem;
+}
+
+.car-cost {
     font-size:0.75rem;
 }
 

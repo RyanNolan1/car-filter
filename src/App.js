@@ -40,16 +40,20 @@ function Car({ carObj }) {
           <p>{carObj.key_features[3]}</p>
         </div>
       </div>
-      <div className="car-details">
+      <div className="car-details-container">
+        <div className="car-details-derivative">
         <p>
           {carObj.plate} {carObj.make} {carObj.model}
         </p>
         <p className="derivative">{carObj.derivative}</p>
+          </div>
+          <div className="car-cost-container">
         <p>
           <span className="monthly-payment">£{carObj.monthly_payment}</span> /mo
           ({carObj.monthly_finance_type})
         </p>
-        <p>£{carObj.price}</p>
+        <p className="car-cost">£{carObj.price}</p>
+        </div>
       </div>
     </div>
   );
