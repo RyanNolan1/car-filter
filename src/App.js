@@ -6,10 +6,11 @@ import starFull from "./img/star-full.svg";
 function App() {
   const [cars, setCars] = useState([]);
   const [total, setTotal] = useState(0);
+  const [classification, setClassification] = useState("All");
 
   useEffect(function () {
     fetch(
-      "https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles"
+      `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=11&advert_classification=${classification}`
     )
       .then((res) => res.json())
       .then((data) => {
@@ -17,11 +18,11 @@ function App() {
         return data;
       })
       .then((data) => setTotal(data.meta.total));
-  }, []);
+  }, [classification]);
 
   return (
     <div>
-      <Filter totalCars={total} />
+      <Filter totalCars={total} onSetClassification={setClassification} />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
@@ -110,14 +111,14 @@ function Car({ carObj }) {
   );
 }
 
-function Filter({ totalCars }) {
+function Filter({ totalCars, onSetClassification }) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
         <p>Showing {totalCars} Cars</p>
-        <button>All</button>
-        <button>Used</button>
-        <button>New</button>
+        <button onClick={() => onSetClassification('All')}>All</button>
+        <button onClick={() => onSetClassification('Used')}>Used</button>
+        <button onClick={() => onSetClassification('New')}>New</button>
         <button>Offers</button>
       </div>
       <select>
