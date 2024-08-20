@@ -102,6 +102,10 @@ body {
   width: 1.5rem;
 }
 
+.star:hover {
+  cursor:pointer;
+}
+
 .car-cost-container {
   display: flex;
   flex-direction: column;

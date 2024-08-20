@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import  starOutline  from "./img/star-outline.svg"
-// import  starFull  from "./img/star-full.svg"
+import starOutline from "./img/star-outline.svg";
+import starFull from "./img/star-full.svg";
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -18,7 +18,10 @@ function App() {
     <div>
       <ul className="car-grid">
         {cars.map((car) => (
-          <Car carObj={car} key={car.vehicle_id} />
+          <Car
+            carObj={car}
+            key={car.vehicle_id}
+          />
         ))}
       </ul>
     </div>
@@ -26,6 +29,12 @@ function App() {
 }
 
 function Car({ carObj }) {
+  const [toggleIcon, setToggleIcon] = useState(true);
+
+  const handleToggle = () => {
+    setToggleIcon(!toggleIcon);
+  };
+
   return (
     <div className="car">
       <div
@@ -44,13 +53,13 @@ function Car({ carObj }) {
       </div>
       <div className="car-details-container">
         <div className="car-details-derivative-container">
-        <div className="car-details-derivative">
-          <p>
-            {carObj.plate} {carObj.make} {carObj.model}
-          </p>
-          <p className="derivative">{carObj.derivative}</p>
+          <div className="car-details-derivative">
+            <p>
+              {carObj.plate} {carObj.make} {carObj.model}
+            </p>
+            <p className="derivative">{carObj.derivative}</p>
           </div>
-        <img className="star" src={ starOutline } alt="Star outline icon" />
+          <img onClick={handleToggle} className="star" src={toggleIcon ? starOutline : starFull} alt="star icon"/>
         </div>
         <div className="car-cost-container">
           <p>
