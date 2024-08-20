@@ -98,12 +98,16 @@ body {
   width: 100%;
 }
 
-.star {
-  width: 1.5rem;
+.star-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
 
-.star:hover {
-  cursor:pointer;
+.star {
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .car-payment-container {

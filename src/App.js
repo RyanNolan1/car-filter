@@ -56,21 +56,44 @@ function Car({ carObj }) {
             </p>
             <p className="derivative">{carObj.derivative}</p>
           </div>
-          <img
-            onClick={handleToggle}
-            className="star"
-            src={toggleIcon ? starOutline : starFull}
-            alt="star icon"
-          />
+          <button onClick={handleToggle} className="star-button">
+            <img
+              className="star"
+              src={toggleIcon ? starOutline : starFull}
+              alt="star icon"
+            />
+          </button>
         </div>
         <div className="car-payment-container">
           <p>
             <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
             /mo ({carObj.monthly_finance_type})
           </p>
-          <div className={carObj.original_price === carObj.price ? "car-cost-container" : "car-cost-container-reverse" }>
-            <p className={carObj.original_price === carObj.price ? "car-cost-hidden" : "original-price-discount" }>£{carObj.original_price}</p>
-            <p className={carObj.original_price === carObj.price ? "car-cost" : "price-discount" }>£{carObj.price}</p>
+          <div
+            className={
+              carObj.original_price === carObj.price
+                ? "car-cost-container"
+                : "car-cost-container-reverse"
+            }
+          >
+            <p
+              className={
+                carObj.original_price === carObj.price
+                  ? "car-cost-hidden"
+                  : "original-price-discount"
+              }
+            >
+              £{carObj.original_price}
+            </p>
+            <p
+              className={
+                carObj.original_price === carObj.price
+                  ? "car-cost"
+                  : "price-discount"
+              }
+            >
+              £{carObj.price}
+            </p>
           </div>
         </div>
       </div>
