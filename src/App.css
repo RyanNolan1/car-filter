@@ -63,6 +63,14 @@ body {
   font-size: 0.75rem;
 }
 
+.transmission::first-letter {
+    text-transform: uppercase;
+}
+
+.transmission {
+    text-transform: lowercase;
+}
+
 .car-details {
   padding: 1rem;
   min-height: 7.125rem;

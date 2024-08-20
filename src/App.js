@@ -25,21 +25,19 @@ function App() {
 
 function Car({ carObj }) {
   return (
-    <div class="car">
+    <div className="car">
       <div
-        class="car-image-container"
+        className="car-image-container"
         style={{
           backgroundImage: `url(${carObj.media_urls[0].thumb})`,
         }}
       >
         <p className="classification">{carObj.advert_classification}</p>
         <div className="key-features">
-        <p>
-        {carObj.key_features[0]}
-        </p>
-        <p>{carObj.key_features[1]}</p>
-        <p>{carObj.key_features[2]}</p>
-        <p>{carObj.key_features[3]}</p>
+          <p>{carObj.key_features[0]}</p>
+          <p>{carObj.key_features[1]}</p>
+          <p className="transmission">{carObj.key_features[2]}</p>
+          <p>{carObj.key_features[3]}</p>
         </div>
       </div>
       <div className="car-details">
@@ -48,7 +46,8 @@ function Car({ carObj }) {
         </p>
         <p className="derivative">{carObj.derivative}</p>
         <p>
-          <span className="monthly-payment">£{carObj.monthly_payment}</span> /mo ({carObj.monthly_finance_type})
+          <span className="monthly-payment">£{carObj.monthly_payment}</span> /mo
+          ({carObj.monthly_finance_type})
         </p>
         <p>£{carObj.price}</p>
       </div>
