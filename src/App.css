@@ -106,13 +106,40 @@ body {
   cursor:pointer;
 }
 
-.car-cost-container {
+.car-payment-container {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
 }
 
 .car-cost {
+  font-size: 0.75rem;
+}
+
+.car-cost-container {
+  display: flex;
+  gap:0.5rem;
+}
+
+.car-cost-container-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+  gap:0.25rem;
+  justify-content: start;
+}
+
+.car-cost-hidden {
+  display:none;
+}
+
+.original-price-discount {
+  color:#55595D;
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
+
+.price-discount {
+  color:#F87B7B;
   font-size: 0.75rem;
 }
 

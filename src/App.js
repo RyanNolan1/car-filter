@@ -18,10 +18,7 @@ function App() {
     <div>
       <ul className="car-grid">
         {cars.map((car) => (
-          <Car
-            carObj={car}
-            key={car.vehicle_id}
-          />
+          <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
     </div>
@@ -59,14 +56,22 @@ function Car({ carObj }) {
             </p>
             <p className="derivative">{carObj.derivative}</p>
           </div>
-          <img onClick={handleToggle} className="star" src={toggleIcon ? starOutline : starFull} alt="star icon"/>
+          <img
+            onClick={handleToggle}
+            className="star"
+            src={toggleIcon ? starOutline : starFull}
+            alt="star icon"
+          />
         </div>
-        <div className="car-cost-container">
+        <div className="car-payment-container">
           <p>
             <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
             /mo ({carObj.monthly_finance_type})
           </p>
-          <p className="car-cost">£{carObj.price}</p>
+          <div className={carObj.original_price === carObj.price ? "car-cost-container" : "car-cost-container-reverse" }>
+            <p className={carObj.original_price === carObj.price ? "car-cost-hidden" : "original-price-discount" }>£{carObj.original_price}</p>
+            <p className={carObj.original_price === carObj.price ? "car-cost" : "price-discount" }>£{carObj.price}</p>
+          </div>
         </div>
       </div>
     </div>
