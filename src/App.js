@@ -69,6 +69,7 @@ function Car({ carObj }) {
             <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
             /mo ({carObj.monthly_finance_type})
           </p>
+          <div className="price-calculate-container">
           <div
             className={
               carObj.original_price === carObj.price
@@ -95,6 +96,10 @@ function Car({ carObj }) {
               £{carObj.price}
             </p>
           </div>
+            <button className="calculate-finance">
+              Calculate Finance
+            </button>
+        </div>
         </div>
       </div>
     </div>
