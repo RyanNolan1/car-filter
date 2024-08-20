@@ -9,6 +9,7 @@
 body {
   font-family: "Inter", sans-serif;
   font-size: 16px;
+  padding:0 1rem;
 }
 
 .car-grid {
@@ -165,7 +166,7 @@ body {
   gap:0.5rem;
 }
 
-@media (min-width: 48rem) and (max-width:90rem) {
+@media (max-width:64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);
     max-width: 41.8125rem;
@@ -173,10 +174,6 @@ body {
 }
 
 @media (max-width:48rem) {
-
-  body{
-    padding:0 1rem;
-  }
 
   .car-grid {
     grid-template-columns: repeat(1, 1fr);
