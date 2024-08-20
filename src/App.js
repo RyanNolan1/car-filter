@@ -7,13 +7,22 @@ function App() {
   const [cars, setCars] = useState([]);
   const [classification, setClassification] = useState("All");
 
-  useEffect(function () {
-    fetch(
-      `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=11&advert_classification=${classification}`
-    )
-      .then((res) => res.json())
-      .then((data) => setCars(data.data))
-  }, [classification]);
+  useEffect(
+    function () {
+      fetch(
+        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=36&advert_classification=${classification}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          let carsObj = data.data;
+          if (classification === "Offers") {
+            carsObj = carsObj.filter((car) => car.original_price !== car.price);
+          }
+          setCars(carsObj);
+        });
+    },
+    [classification]
+  );
 
   return (
     <div>
@@ -111,10 +120,30 @@ function Filter({ onSetClassification, cars }) {
     <nav className="filter">
       <div className="car-count-buttons">
         <p className="car-totals">Showing {cars.length} Cars</p>
-        <button className="filter-button" onClick={() => onSetClassification('All')}>All</button>
-        <button className="filter-button" onClick={() => onSetClassification('Used')}>Used</button>
-        <button className="filter-button" onClick={() => onSetClassification('New')}>New</button>
-        <button className="filter-button" >Offers</button>
+        <button
+          className="filter-button"
+          onClick={() => onSetClassification("All")}
+        >
+          All
+        </button>
+        <button
+          className="filter-button"
+          onClick={() => onSetClassification("Used")}
+        >
+          Used
+        </button>
+        <button
+          className="filter-button"
+          onClick={() => onSetClassification("New")}
+        >
+          New
+        </button>
+        <button
+          className="filter-button"
+          onClick={() => onSetClassification("Offers")}
+        >
+          Offers
+        </button>
       </div>
       <select>
         <option value="lowest-price">Lowest price</option>
