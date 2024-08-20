@@ -12,6 +12,10 @@ body {
   padding:0 1rem;
 }
 
+button {
+  cursor:pointer;
+}
+
 .filter {
   margin:0 auto;
   max-width: 64.3125rem;
@@ -177,6 +181,32 @@ body {
 .price-calculate-container {
   display:flex;
   gap:0.5rem;
+}
+
+.car-count-buttons {
+  display:flex;
+  align-items: center;
+  gap:0.25rem;
+}
+
+.filter-button {
+  color: #55595D;
+  background: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #D1D6E0;
+  width: fit-content;
+  font-weight: 400;
+  transition:0.3s;
+}
+
+.filter-button:hover {
+  color: black;
+  border: 1px solid black;
+}
+
+.car-totals {
+  margin-right:2rem;
 }
 
 @media (max-width:64rem) {

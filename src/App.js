@@ -115,11 +115,11 @@ function Filter({ totalCars, onSetClassification }) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
-        <p>Showing {totalCars} Cars</p>
-        <button onClick={() => onSetClassification('All')}>All</button>
-        <button onClick={() => onSetClassification('Used')}>Used</button>
-        <button onClick={() => onSetClassification('New')}>New</button>
-        <button>Offers</button>
+        <p className="car-totals">Showing {totalCars} Cars</p>
+        <button className="filter-button" onClick={() => onSetClassification('All')}>All</button>
+        <button className="filter-button" onClick={() => onSetClassification('Used')}>Used</button>
+        <button className="filter-button" onClick={() => onSetClassification('New')}>New</button>
+        <button className="filter-button" >Offers</button>
       </div>
       <select>
         <option value="lowest-price">Lowest price</option>
