@@ -1,38 +1,181 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  padding:0 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  max-width: 64.3125rem;
+  margin: 0 auto;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.car {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.car-image-container {
+  padding: 1rem;
+  min-height: 15.625rem;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+}
+
+.key-features {
+  display: flex;
+  gap: 0.5rem;
+  bottom: 0;
+}
+
+.classification,
+.key-features p {
   color: white;
+  background-color: #3f3a50;
+  padding: 0.25rem 0.5rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: fit-content;
+  font-weight: 400;
 }
 
-.App-link {
-  color: #61dafb;
+.classification {
+  font-weight: 400;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.key-features p {
+  font-size: 0.75rem;
+}
+
+.transmission::first-letter {
+  text-transform: uppercase;
+}
+
+.transmission {
+  text-transform: lowercase;
+}
+
+.car-details-container {
+  padding: 1rem;
+  min-height: 7.125rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.derivative {
+  color: #55595d;
+  font-size: 0.75rem;
+}
+
+.car-details-derivative-container {
+  gap: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.car-details-derivative {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  width: 100%;
+}
+
+.star-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.star {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.car-payment-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.car-cost {
+  font-size: 0.75rem;
+}
+
+.car-cost-container {
+  display: flex;
+  gap:0.5rem;
+}
+
+.car-cost-container-reverse {
+  display: flex;
+  flex-direction: row-reverse;
+  gap:0.5rem;
+  justify-content: start;
+}
+
+.car-cost-hidden {
+  display:none;
+}
+
+.original-price-discount {
+  color:#55595D;
+  font-size: 0.75rem;
+  text-decoration: line-through;
+}
+
+.price-discount {
+  color:#F87B7B;
+  font-size: 0.75rem;
+}
+
+.monthly-payment {
+  font-weight: 600;
+}
+
+.calculate-finance {
+  color:#7572FF;
+  font-size: 0.75rem;
+  background: none;
+  border:none;
+  padding:0;
+  cursor:pointer;
+}
+
+.price-calculate-container {
+  display:flex;
+  gap:0.5rem;
+}
+
+@media (max-width:64rem) {
+  .car-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 41.8125rem;
+  }  
+}
+
+@media (max-width:48rem) {
+
+  .car-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }  
 }
