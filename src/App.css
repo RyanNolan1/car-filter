@@ -64,42 +64,54 @@ body {
 }
 
 .transmission::first-letter {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .transmission {
-    text-transform: lowercase;
+  text-transform: lowercase;
 }
 
 .car-details-container {
   padding: 1rem;
   min-height: 7.125rem;
-  gap:1rem;
-  display:flex;
+  gap: 1rem;
+  display: flex;
   flex-direction: column;
 }
 
 .derivative {
-    color:#55595D;
-    font-size:0.75rem;
+  color: #55595d;
+  font-size: 0.75rem;
+}
+
+.car-details-derivative-container {
+  gap: 1rem;
+  display: flex;
+  align-items: flex-start;
 }
 
 .car-details-derivative {
-    display:flex;
-    flex-direction: column;
-    gap:0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  width: 100%;
+}
+
+.star {
+  width: 1.5rem;
 }
 
 .car-cost-container {
-    display:flex;
-    flex-direction:column;
-    gap:0.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .car-cost {
-    font-size:0.75rem;
+  font-size: 0.75rem;
 }
 
 .monthly-payment {
-    font-weight:600;
+  font-weight: 600;
 }

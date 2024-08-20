@@ -1,5 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import  starOutline  from "./img/star-outline.svg"
+// import  starFull  from "./img/star-full.svg"
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -41,18 +43,21 @@ function Car({ carObj }) {
         </div>
       </div>
       <div className="car-details-container">
+        <div className="car-details-derivative-container">
         <div className="car-details-derivative">
-        <p>
-          {carObj.plate} {carObj.make} {carObj.model}
-        </p>
-        <p className="derivative">{carObj.derivative}</p>
+          <p>
+            {carObj.plate} {carObj.make} {carObj.model}
+          </p>
+          <p className="derivative">{carObj.derivative}</p>
           </div>
-          <div className="car-cost-container">
-        <p>
-          <span className="monthly-payment">£{carObj.monthly_payment}</span> /mo
-          ({carObj.monthly_finance_type})
-        </p>
-        <p className="car-cost">£{carObj.price}</p>
+        <img className="star" src={ starOutline } alt="Star outline icon" />
+        </div>
+        <div className="car-cost-container">
+          <p>
+            <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
+            /mo ({carObj.monthly_finance_type})
+          </p>
+          <p className="car-cost">£{carObj.price}</p>
         </div>
       </div>
     </div>
