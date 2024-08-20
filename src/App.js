@@ -5,18 +5,23 @@ import starFull from "./img/star-full.svg";
 
 function App() {
   const [cars, setCars] = useState([]);
+  const [total, setTotal] = useState(0);
 
   useEffect(function () {
     fetch(
       "https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles"
     )
       .then((res) => res.json())
-      .then((data) => setCars(data.data));
+      .then((data) => {
+        setCars(data.data);
+        return data;
+      })
+      .then((data) => setTotal(data.meta.total));
   }, []);
 
   return (
     <div>
-      <Filter />
+      <Filter totalCars={total} />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
@@ -71,57 +76,55 @@ function Car({ carObj }) {
             /mo ({carObj.monthly_finance_type})
           </p>
           <div className="price-calculate-container">
-          <div
-            className={
-              carObj.original_price === carObj.price
-                ? "car-cost-container"
-                : "car-cost-container-reverse"
-            }
-          >
-            <p
+            <div
               className={
                 carObj.original_price === carObj.price
-                  ? "car-cost-hidden"
-                  : "original-price-discount"
+                  ? "car-cost-container"
+                  : "car-cost-container-reverse"
               }
             >
-              £{carObj.original_price}
-            </p>
-            <p
-              className={
-                carObj.original_price === carObj.price
-                  ? "car-cost"
-                  : "price-discount"
-              }
-            >
-              £{carObj.price}
-            </p>
+              <p
+                className={
+                  carObj.original_price === carObj.price
+                    ? "car-cost-hidden"
+                    : "original-price-discount"
+                }
+              >
+                £{carObj.original_price}
+              </p>
+              <p
+                className={
+                  carObj.original_price === carObj.price
+                    ? "car-cost"
+                    : "price-discount"
+                }
+              >
+                £{carObj.price}
+              </p>
+            </div>
+            <button className="calculate-finance">Calculate Finance</button>
           </div>
-            <button className="calculate-finance">
-              Calculate Finance
-            </button>
-        </div>
         </div>
       </div>
     </div>
   );
 }
 
-function Filter() {
+function Filter({ totalCars }) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
-      <p>Showing 339 Cars</p>
-      <button>All</button>
-      <button>Used</button>
-      <button>New</button>
-      <button>Offers</button>
+        <p>Showing {totalCars} Cars</p>
+        <button>All</button>
+        <button>Used</button>
+        <button>New</button>
+        <button>Offers</button>
       </div>
       <select>
-      <option value="lowest-price">Lowest price</option>
+        <option value="lowest-price">Lowest price</option>
       </select>
     </nav>
-  )
+  );
 }
 
 export default App;
