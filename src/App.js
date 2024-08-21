@@ -9,7 +9,7 @@ function App() {
   const [activeButton, setActiveButton] = useState(0);
 
   function handleSetActiveButton(buttonId) {
-    setActiveButton(buttonId)
+    setActiveButton(buttonId);
   }
 
   useEffect(
@@ -31,12 +31,18 @@ function App() {
 
   return (
     <div>
-      <Filter activeButton={activeButton} onHandleSetActiveButton={handleSetActiveButton} cars={cars} onSetClassification={setClassification} />
+      <Filter
+        activeButton={activeButton}
+        onHandleSetActiveButton={handleSetActiveButton}
+        cars={cars}
+        onSetClassification={setClassification}
+      />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
+      <Footer />
     </div>
   );
 }
@@ -120,40 +126,49 @@ function Car({ carObj }) {
   );
 }
 
-function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButton }) {
+function Filter({
+  activeButton,
+  onSetClassification,
+  cars,
+  onHandleSetActiveButton,
+}) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
         <p className="car-totals">Showing {cars.length} Cars</p>
         <button
-          className={activeButton === 0 ? "active-button": "filter-button"}
+          className={activeButton === 0 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(0)
-            onSetClassification("All")}}
+            onHandleSetActiveButton(0);
+            onSetClassification("All");
+          }}
         >
           All
         </button>
         <button
-          className={activeButton === 1 ? "active-button": "filter-button"}
+          className={activeButton === 1 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(1)
-            onSetClassification("Used")}}
+            onHandleSetActiveButton(1);
+            onSetClassification("Used");
+          }}
         >
           Used
         </button>
         <button
-          className={activeButton === 2 ? "active-button": "filter-button"}
+          className={activeButton === 2 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(2)
-            onSetClassification("New")}}
+            onHandleSetActiveButton(2);
+            onSetClassification("New");
+          }}
         >
           New
         </button>
         <button
-          className={activeButton === 3 ? "active-button": "filter-button"}
+          className={activeButton === 3 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(3)
-            onSetClassification("Offers")}}
+            onHandleSetActiveButton(3);
+            onSetClassification("Offers");
+          }}
         >
           Offers
         </button>
@@ -163,6 +178,28 @@ function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButt
         <option value="highest-price">Highest price</option>
       </select>
     </nav>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <button>Back to top</button>
+      <div class="pagination">
+        <a href="#">&laquo;</a>
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+        <a href="#">&raquo;</a>
+      </div>
+      <select className="sort-dropdown">
+        <option value="lowest-price">Lowest price</option>
+        <option value="highest-price">Highest price</option>
+      </select>
+    </footer>
   );
 }
 

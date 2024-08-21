@@ -239,6 +239,20 @@ button {
   outline: none;
 }
 
+footer {
+  margin:0 auto;
+  max-width: 64.3125rem;
+  padding:2rem 0;
+  display:flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.pagination {
+display:flex;
+gap:1rem;
+}
+
 @media (max-width:64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);
