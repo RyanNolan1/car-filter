@@ -5,17 +5,33 @@ import starFull from "./img/star-full.svg";
 
 function App() {
   const [cars, setCars] = useState([]);
+  const [classification, setClassification] = useState("All");
+  const [activeButton, setActiveButton] = useState(0);
 
-  useEffect(function () {
-    fetch(
-      "https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles"
-    )
-      .then((res) => res.json())
-      .then((data) => setCars(data.data));
-  }, []);
+  function handleSetActiveButton(buttonId) {
+    setActiveButton(buttonId)
+  }
+
+  useEffect(
+    function () {
+      fetch(
+        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=36&advert_classification=${classification}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          let carsObj = data.data;
+          if (classification === "Offers") {
+            carsObj = carsObj.filter((car) => car.original_price !== car.price);
+          }
+          setCars(carsObj);
+        });
+    },
+    [classification]
+  );
 
   return (
     <div>
+      <Filter activeButton={activeButton} onHandleSetActiveButton={handleSetActiveButton} cars={cars} onSetClassification={setClassification} />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
@@ -70,39 +86,83 @@ function Car({ carObj }) {
             /mo ({carObj.monthly_finance_type})
           </p>
           <div className="price-calculate-container">
-          <div
-            className={
-              carObj.original_price === carObj.price
-                ? "car-cost-container"
-                : "car-cost-container-reverse"
-            }
-          >
-            <p
+            <div
               className={
                 carObj.original_price === carObj.price
-                  ? "car-cost-hidden"
-                  : "original-price-discount"
+                  ? "car-cost-container"
+                  : "car-cost-container-reverse"
               }
             >
-              £{carObj.original_price}
-            </p>
-            <p
-              className={
-                carObj.original_price === carObj.price
-                  ? "car-cost"
-                  : "price-discount"
-              }
-            >
-              £{carObj.price}
-            </p>
+              <p
+                className={
+                  carObj.original_price === carObj.price
+                    ? "car-cost-hidden"
+                    : "original-price-discount"
+                }
+              >
+                £{carObj.original_price}
+              </p>
+              <p
+                className={
+                  carObj.original_price === carObj.price
+                    ? "car-cost"
+                    : "price-discount"
+                }
+              >
+                £{carObj.price}
+              </p>
+            </div>
+            <button className="calculate-finance">Calculate Finance</button>
           </div>
-            <button className="calculate-finance">
-              Calculate Finance
-            </button>
-        </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButton }) {
+  return (
+    <nav className="filter">
+      <div className="car-count-buttons">
+        <p className="car-totals">Showing {cars.length} Cars</p>
+        <button
+          className={activeButton === 0 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(0)
+            onSetClassification("All")}}
+        >
+          All
+        </button>
+        <button
+          className={activeButton === 1 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(1)
+            onSetClassification("Used")}}
+        >
+          Used
+        </button>
+        <button
+          className={activeButton === 2 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(2)
+            onSetClassification("New")}}
+        >
+          New
+        </button>
+        <button
+          className={activeButton === 3 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(3)
+            onSetClassification("Offers")}}
+        >
+          Offers
+        </button>
+      </div>
+      <select className="sort-dropdown">
+        <option value="lowest-price">Lowest price</option>
+        <option value="highest-price">Highest price</option>
+      </select>
+    </nav>
   );
 }
 

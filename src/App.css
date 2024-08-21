@@ -12,6 +12,23 @@ body {
   padding:0 1rem;
 }
 
+button {
+  cursor:pointer;
+}
+
+.filter {
+  margin:0 auto;
+  max-width: 64.3125rem;
+  padding:2rem 0;
+  display:flex;
+  justify-content: space-between
+}
+
+.car-count-buttons {
+  display:flex;
+  gap:0.5rem;
+}
+
 .car-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -164,6 +181,62 @@ body {
 .price-calculate-container {
   display:flex;
   gap:0.5rem;
+}
+
+.car-count-buttons {
+  display:flex;
+  align-items: center;
+  gap:0.25rem;
+}
+
+.filter-button {
+  color: #55595D;
+  background: none;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #D1D6E0;
+  width: fit-content;
+  font-weight: 400;
+  transition:0.3s;
+}
+
+.filter-button:hover {
+  color: black;
+  border: 1px solid black;
+}
+
+.car-totals {
+  margin-right:2rem;
+}
+
+.active-button {
+  color:white;
+  background-color:#7572FF;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #D1D6E0;
+  font-weight: 400;
+}
+
+.sort-dropdown {
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+  padding:1rem;
+  border:none;
+  background: #F6F7FB;
+  border-radius:10px;
+  padding:1rem;
+  padding-right:2rem;
+  background-image:url("./img/down-arrow.svg");
+  background-repeat:no-repeat;
+  background-position: right 16px center;
+  background-size:0.75rem;
+  color:#55595D;
+}
+
+.sort-dropdown:focus {
+  outline: none;
 }
 
 @media (max-width:64rem) {
