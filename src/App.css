@@ -189,6 +189,7 @@ button {
   gap:0.25rem;
 }
 
+.pagination-button,
 .filter-button {
   color: #55595D;
   background: none;
@@ -237,6 +238,27 @@ button {
 
 .sort-dropdown:focus {
   outline: none;
+}
+
+footer {
+  margin:0 auto;
+  max-width: 64.3125rem;
+  padding:2rem 0;
+  display:flex;
+  align-items: center;
+  justify-content: space-between
+}
+
+.pagination {
+display:flex;
+gap:1rem;
+}
+
+.back-to-top-button {
+  background:none;
+  border:none;
+  border-bottom: solid 1px;
+  color:#55595D;
 }
 
 @media (max-width:64rem) {

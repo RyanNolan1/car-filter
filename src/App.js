@@ -7,15 +7,25 @@ function App() {
   const [cars, setCars] = useState([]);
   const [classification, setClassification] = useState("All");
   const [activeButton, setActiveButton] = useState(0);
+  const [activePage, setActivePage] = useState(1);
+  const [page, setPage] = useState(1);
+
+  function handlePage(pageNumber) {
+    setPage(pageNumber);
+  }
 
   function handleSetActiveButton(buttonId) {
-    setActiveButton(buttonId)
+    setActiveButton(buttonId);
+  }
+
+  function handleSetActivePage(buttonId) {
+    setActivePage(buttonId);
   }
 
   useEffect(
     function () {
       fetch(
-        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=36&advert_classification=${classification}`
+        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=11&advert_classification=${classification}&page=${page}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -26,17 +36,27 @@ function App() {
           setCars(carsObj);
         });
     },
-    [classification]
+    [classification, page]
   );
 
   return (
     <div>
-      <Filter activeButton={activeButton} onHandleSetActiveButton={handleSetActiveButton} cars={cars} onSetClassification={setClassification} />
+      <Filter
+        activeButton={activeButton}
+        onHandleSetActiveButton={handleSetActiveButton}
+        cars={cars}
+        onSetClassification={setClassification}
+      />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
+      <Footer
+        activePage={activePage}
+        onHandleSetActivePage={handleSetActivePage}
+        onHandlePage={handlePage}
+      />
     </div>
   );
 }
@@ -120,40 +140,49 @@ function Car({ carObj }) {
   );
 }
 
-function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButton }) {
+function Filter({
+  activeButton,
+  onSetClassification,
+  cars,
+  onHandleSetActiveButton,
+}) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
         <p className="car-totals">Showing {cars.length} Cars</p>
         <button
-          className={activeButton === 0 ? "active-button": "filter-button"}
+          className={activeButton === 0 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(0)
-            onSetClassification("All")}}
+            onHandleSetActiveButton(0);
+            onSetClassification("All");
+          }}
         >
           All
         </button>
         <button
-          className={activeButton === 1 ? "active-button": "filter-button"}
+          className={activeButton === 1 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(1)
-            onSetClassification("Used")}}
+            onHandleSetActiveButton(1);
+            onSetClassification("Used");
+          }}
         >
           Used
         </button>
         <button
-          className={activeButton === 2 ? "active-button": "filter-button"}
+          className={activeButton === 2 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(2)
-            onSetClassification("New")}}
+            onHandleSetActiveButton(2);
+            onSetClassification("New");
+          }}
         >
           New
         </button>
         <button
-          className={activeButton === 3 ? "active-button": "filter-button"}
+          className={activeButton === 3 ? "active-button" : "filter-button"}
           onClick={() => {
-            onHandleSetActiveButton(3)
-            onSetClassification("Offers")}}
+            onHandleSetActiveButton(3);
+            onSetClassification("Offers");
+          }}
         >
           Offers
         </button>
@@ -163,6 +192,89 @@ function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButt
         <option value="highest-price">Highest price</option>
       </select>
     </nav>
+  );
+}
+
+function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+
+  return (
+    <footer>
+      <button  onClick={scrollToTop} className="back-to-top-button">Back to top</button>
+      <div className="pagination">
+        <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage >= 2) {
+              onHandleSetActivePage(activePage - 1);
+              onHandlePage(activePage - 1);
+            }
+          }}
+        >
+          &larr;
+        </button>
+        <button
+          className={activePage === 1 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(1);
+            onHandlePage(1);
+          }}
+        >
+          1
+        </button>
+        <button
+          className={activePage === 2 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(2);
+            onHandlePage(2);
+          }}
+        >
+          2
+        </button>
+        <button
+          className={activePage === 3 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(3);
+            onHandlePage(3);
+          }}
+        >
+          3
+        </button>
+        <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage <= 2) {
+              onHandleSetActivePage(activePage + 1);
+              onHandlePage(activePage + 1);
+            }
+          }}
+        >
+          &rarr;
+        </button>
+      <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage <= 2) {
+              onHandleSetActivePage(activePage + 2);
+              onHandlePage(activePage + 2);
+            }
+          }}
+        >
+          &raquo;
+        </button>
+      </div>
+      <select className="sort-dropdown">
+        <option value="lowest-price">Lowest price</option>
+        <option value="highest-price">Highest price</option>
+      </select>
+    </footer>
   );
 }
 
