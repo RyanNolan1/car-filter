@@ -306,6 +306,29 @@ footer {
   cursor:pointer;
 }
 
+.form-label {
+  display:flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-input {
+  min-height: 3.125rem;
+  border-radius: 16px;
+  border:none;
+}
+
+.input-title {
+  background: #f6f7fb;
+  padding:0.25rem;
+  width:fit-content;
+  border-radius:10px;
+  position:absolute;
+  margin-top:-1rem;
+  font-weight:400;
+  font-size:0.0.75rem;
+}
+
 @media (max-width: 64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);

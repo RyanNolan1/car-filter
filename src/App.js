@@ -294,13 +294,13 @@ function ValueForm() {
         <p>Find out the value of your car in just a few minutes</p>
       </div>
       <form className="value-form">
-        <label>
-          VRM
-          <input type="text" name="VRM" />
+        <label class="form-label">
+          <p className="input-title">VRM</p>
+          <input className="form-input" type="text" name="VRM" placeholder="Enter VRM" />
         </label>
-        <label>
-          Mileage
-          <input type="number" name="Mileage" />
+        <label class="form-label">
+          <p className="input-title">Mileage</p>
+          <input className="form-input" type="number" name="Mileage" placeholder="Enter mileage" />
         </label>
         <input
           className="value-form-submit"
