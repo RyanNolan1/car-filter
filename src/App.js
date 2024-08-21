@@ -7,6 +7,12 @@ function App() {
   const [cars, setCars] = useState([]);
   const [classification, setClassification] = useState("All");
   const [activeButton, setActiveButton] = useState(0);
+  const [page, setPage] = useState(1);
+
+
+  function handlePage(pageNumber) {
+    setPage(pageNumber)
+  }
 
   function handleSetActiveButton(buttonId) {
     setActiveButton(buttonId);
@@ -15,7 +21,7 @@ function App() {
   useEffect(
     function () {
       fetch(
-        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=36&advert_classification=${classification}`
+        `https://corsproxy.io/?https://m6zhmj6dggvrmepfanilteq4q40rlalu.lambda-url.eu-west-1.on.aws/vehicles?results_per_page=11&advert_classification=${classification}&page=${page}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -42,7 +48,7 @@ function App() {
           <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
-      <Footer />
+      <Footer onHandlePage={handlePage} />
     </div>
   );
 }
@@ -181,19 +187,17 @@ function Filter({
   );
 }
 
-function Footer() {
+function Footer({ onHandlePage }) {
   return (
     <footer>
       <button>Back to top</button>
-      <div class="pagination">
-        <a href="#">&laquo;</a>
-        <a href="#">1</a>
-        <a href="#">2</a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">6</a>
-        <a href="#">&raquo;</a>
+      <div className="pagination">
+        <button>&laquo;</button>
+        <button onClick={() => onHandlePage(1)}>1</button>
+        <button onClick={() => onHandlePage(2)}>2</button>
+        <button onClick={() => onHandlePage(3)}>3</button>
+        <button onClick={() => onHandlePage(4)}>4</button>
+        <button>&raquo;</button>
       </div>
       <select className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
