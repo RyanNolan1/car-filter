@@ -200,7 +200,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // Smooth scroll animation
+      behavior: 'smooth',
     });
   };
 
@@ -218,7 +218,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          &laquo;
+          &larr;
         </button>
         <button
           className={activePage === 1 ? "active-button" : "pagination-button"}
@@ -253,6 +253,17 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             if (activePage <= 2) {
               onHandleSetActivePage(activePage + 1);
               onHandlePage(activePage + 1);
+            }
+          }}
+        >
+          &rarr;
+        </button>
+      <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage <= 2) {
+              onHandleSetActivePage(activePage + 2);
+              onHandlePage(activePage + 2);
             }
           }}
         >
