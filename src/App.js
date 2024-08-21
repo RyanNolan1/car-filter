@@ -32,7 +32,7 @@ function App() {
           setCars(carsObj);
         });
     },
-    [classification]
+    [classification, page]
   );
 
   return (
