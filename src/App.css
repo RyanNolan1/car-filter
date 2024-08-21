@@ -209,6 +209,15 @@ button {
   margin-right:2rem;
 }
 
+.active-button {
+  color:white;
+  background-color:#7572FF;
+  padding: 0.25rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #D1D6E0;
+  font-weight: 400;
+}
+
 @media (max-width:64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);

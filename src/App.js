@@ -6,6 +6,11 @@ import starFull from "./img/star-full.svg";
 function App() {
   const [cars, setCars] = useState([]);
   const [classification, setClassification] = useState("All");
+  const [activeButton, setActiveButton] = useState(0);
+
+  function handleSetActiveButton(buttonId) {
+    setActiveButton(buttonId)
+  }
 
   useEffect(
     function () {
@@ -26,7 +31,7 @@ function App() {
 
   return (
     <div>
-      <Filter cars={cars} onSetClassification={setClassification} />
+      <Filter activeButton={activeButton} onHandleSetActiveButton={handleSetActiveButton} cars={cars} onSetClassification={setClassification} />
       <ul className="car-grid">
         {cars.map((car) => (
           <Car carObj={car} key={car.vehicle_id} />
@@ -115,32 +120,40 @@ function Car({ carObj }) {
   );
 }
 
-function Filter({ onSetClassification, cars }) {
+function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButton }) {
   return (
     <nav className="filter">
       <div className="car-count-buttons">
         <p className="car-totals">Showing {cars.length} Cars</p>
         <button
-          className="filter-button"
-          onClick={() => onSetClassification("All")}
+          className={activeButton === 0 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(0)
+            onSetClassification("All")}}
         >
           All
         </button>
         <button
-          className="filter-button"
-          onClick={() => onSetClassification("Used")}
+          className={activeButton === 1 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(1)
+            onSetClassification("Used")}}
         >
           Used
         </button>
         <button
-          className="filter-button"
-          onClick={() => onSetClassification("New")}
+          className={activeButton === 2 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(2)
+            onSetClassification("New")}}
         >
           New
         </button>
         <button
-          className="filter-button"
-          onClick={() => onSetClassification("Offers")}
+          className={activeButton === 3 ? "active-button": "filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(3)
+            onSetClassification("Offers")}}
         >
           Offers
         </button>
