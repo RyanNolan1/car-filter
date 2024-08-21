@@ -189,7 +189,7 @@ button {
   gap:0.25rem;
 }
 
-.pagination button,
+.pagination-button,
 .filter-button {
   color: #55595D;
   background: none;

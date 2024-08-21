@@ -7,15 +7,19 @@ function App() {
   const [cars, setCars] = useState([]);
   const [classification, setClassification] = useState("All");
   const [activeButton, setActiveButton] = useState(0);
+  const [activePage, setActivePage] = useState(1);
   const [page, setPage] = useState(1);
 
-
   function handlePage(pageNumber) {
-    setPage(pageNumber)
+    setPage(pageNumber);
   }
 
   function handleSetActiveButton(buttonId) {
     setActiveButton(buttonId);
+  }
+
+  function handleSetActivePage(buttonId) {
+    setActivePage(buttonId);
   }
 
   useEffect(
@@ -48,7 +52,11 @@ function App() {
           <Car carObj={car} key={car.vehicle_id} />
         ))}
       </ul>
-      <Footer onHandlePage={handlePage} />
+      <Footer
+        activePage={activePage}
+        onHandleSetActivePage={handleSetActivePage}
+        onHandlePage={handlePage}
+      />
     </div>
   );
 }
@@ -187,17 +195,40 @@ function Filter({
   );
 }
 
-function Footer({ onHandlePage }) {
+function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
   return (
     <footer>
       <button>Back to top</button>
       <div className="pagination">
-        <button>&laquo;</button>
-        <button onClick={() => onHandlePage(1)}>1</button>
-        <button onClick={() => onHandlePage(2)}>2</button>
-        <button onClick={() => onHandlePage(3)}>3</button>
-        <button onClick={() => onHandlePage(4)}>4</button>
-        <button>&raquo;</button>
+        <button className="pagination-button">&laquo;</button>
+        <button
+          className={activePage === 1 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(1);
+            onHandlePage(1);
+          }}
+        >
+          1
+        </button>
+        <button
+          className={activePage === 2 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(2);
+            onHandlePage(2);
+          }}
+        >
+          2
+        </button>
+        <button
+          className={activePage === 3 ? "active-button" : "pagination-button"}
+          onClick={() => {
+            onHandleSetActivePage(3);
+            onHandlePage(3);
+          }}
+        >
+          3
+        </button>
+        <button  className="pagination-button">&raquo;</button>
       </div>
       <select className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
