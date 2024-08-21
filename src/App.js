@@ -196,18 +196,18 @@ function Filter({
 }
 
 function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
-
   return (
     <footer>
-      <button  onClick={scrollToTop} className="back-to-top-button">Back to top</button>
+      <button onClick={scrollToTop} className="back-to-top-button">
+        Back to top
+      </button>
       <div className="pagination">
         <button
           className="pagination-button"
@@ -258,7 +258,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
         >
           &rarr;
         </button>
-      <button
+        <button
           className="pagination-button"
           onClick={() => {
             if (activePage <= 2) {
@@ -275,6 +275,26 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
         <option value="highest-price">Highest price</option>
       </select>
     </footer>
+  );
+}
+
+function ValueForm() {
+  return (
+    <div>
+      <h1>Value your car</h1>
+      <p>Find out the value of your car in just a few minutes</p>
+      <form>
+        <label>
+          VRM
+          <input type="text" name="VRM" />
+        </label>
+        <label>
+         Mileage
+          <input type="number" name="Mileage" />
+        </label>
+        <input type="submit" value="Value my car" />
+      </form>
+    </div>
   );
 }
 
