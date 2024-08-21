@@ -48,9 +48,17 @@ function App() {
         onSetClassification={setClassification}
       />
       <ul className="car-grid">
-        {cars.map((car) => (
-          <Car carObj={car} key={car.vehicle_id} />
-        ))}
+        {cars.map((car, index) => {
+          if (index === 4) {
+            return (
+              <>
+                <ValueForm key="value-form" />
+                <Car carObj={car} key={car.vehicle_id} />
+              </>
+            );
+          }
+          return <Car carObj={car} key={car.vehicle_id} />;
+        })}
       </ul>
       <Footer
         activePage={activePage}
@@ -280,19 +288,25 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
 
 function ValueForm() {
   return (
-    <div>
-      <h1>Value your car</h1>
-      <p>Find out the value of your car in just a few minutes</p>
-      <form>
+    <div className="value-form-container">
+      <div className="value-form-top-container">
+        <h1>Value your car</h1>
+        <p>Find out the value of your car in just a few minutes</p>
+      </div>
+      <form className="value-form">
         <label>
           VRM
           <input type="text" name="VRM" />
         </label>
         <label>
-         Mileage
+          Mileage
           <input type="number" name="Mileage" />
         </label>
-        <input type="submit" value="Value my car" />
+        <input
+          className="value-form-submit"
+          type="submit"
+          value="Value my car"
+        />
       </form>
     </div>
   );
