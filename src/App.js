@@ -196,9 +196,18 @@ function Filter({
 }
 
 function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', // Smooth scroll animation
+    });
+  };
+
+
   return (
     <footer>
-      <button>Back to top</button>
+      <button  onClick={scrollToTop} className="back-to-top-button">Back to top</button>
       <div className="pagination">
         <button
           className="pagination-button"

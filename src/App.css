@@ -254,6 +254,13 @@ display:flex;
 gap:1rem;
 }
 
+.back-to-top-button {
+  background:none;
+  border:none;
+  border-bottom: solid 1px;
+  color:#55595D;
+}
+
 @media (max-width:64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);
