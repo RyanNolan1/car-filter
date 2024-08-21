@@ -200,11 +200,17 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
     <footer>
       <button>Back to top</button>
       <div className="pagination">
-        <button className="pagination-button"
-                  onClick={() => {
-                    onHandleSetActivePage(activePage - 1);
-                    onHandlePage(activePage - 1);
-                  }}>&laquo;</button>
+        <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage >= 2) {
+              onHandleSetActivePage(activePage - 1);
+              onHandlePage(activePage - 1);
+            }
+          }}
+        >
+          &laquo;
+        </button>
         <button
           className={activePage === 1 ? "active-button" : "pagination-button"}
           onClick={() => {
@@ -232,10 +238,17 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
         >
           3
         </button>
-        <button className="pagination-button"   onClick={() => {
-                    onHandleSetActivePage(activePage + 1);
-                    onHandlePage(activePage + 1)}}
-        >&raquo;</button>
+        <button
+          className="pagination-button"
+          onClick={() => {
+            if (activePage <= 2) {
+              onHandleSetActivePage(activePage + 1);
+              onHandlePage(activePage + 1);
+            }
+          }}
+        >
+          &raquo;
+        </button>
       </div>
       <select className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
