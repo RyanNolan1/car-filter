@@ -158,8 +158,9 @@ function Filter({ activeButton, onSetClassification, cars, onHandleSetActiveButt
           Offers
         </button>
       </div>
-      <select>
+      <select className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
+        <option value="highest-price">Highest price</option>
       </select>
     </nav>
   );

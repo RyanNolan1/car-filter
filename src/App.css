@@ -218,6 +218,27 @@ button {
   font-weight: 400;
 }
 
+.sort-dropdown {
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  appearance:none;
+  padding:1rem;
+  border:none;
+  background: #F6F7FB;
+  border-radius:10px;
+  padding:1rem;
+  padding-right:2rem;
+  background-image:url("./img/down-arrow.svg");
+  background-repeat:no-repeat;
+  background-position: right 16px center;
+  background-size:0.75rem;
+  color:#55595D;
+}
+
+.sort-dropdown:focus {
+  outline: none;
+}
+
 @media (max-width:64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);
