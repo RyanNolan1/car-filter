@@ -93,6 +93,9 @@ function Car({ carObj }) {
             <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
             <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
             <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
+            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+            <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
+            <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
           </div>
         </div>
       <div
