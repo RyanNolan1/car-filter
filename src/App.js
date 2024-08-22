@@ -369,7 +369,7 @@ function ValueForm() {
             VRM<span className="asterisk">*</span>
           </p>
           <input
-            maxlength="10"
+            maxLength="10"
             className="form-input"
             type="text"
             name="VRM"
