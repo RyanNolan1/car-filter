@@ -297,6 +297,7 @@ footer {
   width: 100%;
 }
 
+.value-form-submit-mobile,
 .value-form-submit {
   background-color: #7572ff;
   border: none;
@@ -555,14 +556,12 @@ input::-webkit-inner-spin-button {
     width: fit-content;
   }
 
-  .value-form-submit {
-    display: none;
-  }
-
   .value-form-submit-mobile {
     display: block;
   }
 
+  .value-form-submit,
+  .value-form-text,
   .form-label,
   .form-input,
   .input-title,
@@ -570,17 +569,7 @@ input::-webkit-inner-spin-button {
     display: none;
   }
 
-  .value-form-text {
-    display: none;
-  }
-
   .value-form-submit-mobile {
-    background-color: #7572ff;
-    border: none;
-    min-height: 3.125rem;
-    border-radius: 16px;
-    color: white;
-    cursor: pointer;
-    padding:1rem;
+    padding: 1rem;
   }
 }
