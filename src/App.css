@@ -316,6 +316,7 @@ footer {
   min-height: 3.125rem;
   border-radius: 16px;
   border:none;
+  padding:1rem;
 }
 
 .input-title {
@@ -326,7 +327,26 @@ footer {
   position:absolute;
   margin-top:-1rem;
   font-weight:400;
-  font-size:0.0.75rem;
+  font-size:0.75rem;
+  margin-left:0.75rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.form-input:focus {
+  outline: none;
+}
+
+.input-title span  {
+  color:#F87B7B;
+}
+
+.asterisk {
+  position: absolute;
 }
 
 @media (max-width: 64rem) {
