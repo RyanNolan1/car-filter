@@ -108,6 +108,7 @@ function Car({ carObj }) {
             </p>
             <p className="derivative">{carObj.derivative}</p>
           </div>
+          <p className="mobile-classification">{carObj.advert_classification}</p>
           <button onClick={handleToggle} className="star-button">
             <img
               className="star"

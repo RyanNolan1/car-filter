@@ -62,6 +62,7 @@ button {
   bottom: 0;
 }
 
+
 .classification,
 .key-features p {
   color: white;
@@ -438,5 +439,41 @@ input::-webkit-inner-spin-button {
 
   .back-to-top-button {
     font-size:1rem;
+  }
+
+  .key-features {
+    display:none;
+  }
+
+  .classification {
+    display:none;
+  }
+
+  .car-details-derivative {
+    font-size:0.875rem;
+    
+  }
+
+  .derivative {
+    font-size:0.75rem;
+  }
+
+  .calculate-finance {
+    display:none;
+  }
+
+  .car {
+    box-shadow: none;
+  }
+
+  .mobile-classification {
+    color: white;
+    background-color: #3f3a50;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: fit-content;
+    font-weight: 400;
+    font-size:0.75rem;
   }
 }
