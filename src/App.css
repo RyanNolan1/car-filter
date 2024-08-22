@@ -481,8 +481,18 @@ input::-webkit-inner-spin-button {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: 0.75rem;
+    padding-right:2.5rem;
   }
 
+  .mobile-car-payment-container span {
+    font-size:1rem;
+  }
+
+  .price-calculate-container {
+    padding-right:2.5rem;
+  }
+  
   .mobile-key-features {
     font-size: 0.75rem;
     color: #55595d;
@@ -499,5 +509,9 @@ input::-webkit-inner-spin-button {
   .car-details-container {
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .monthly-payment {
+    font-weight:400;
   }
 }
