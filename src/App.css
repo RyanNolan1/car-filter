@@ -26,7 +26,8 @@ button {
 
 .car-count-buttons {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.25rem;
 }
 
 .car-grid {
@@ -181,12 +182,6 @@ button {
 .price-calculate-container {
   display: flex;
   gap: 0.5rem;
-}
-
-.car-count-buttons {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
 }
 
 .pagination-button,
