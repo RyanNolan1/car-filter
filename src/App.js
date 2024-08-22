@@ -86,6 +86,15 @@ function Car({ carObj }) {
 
   return (
     <div className="car">
+        <div
+          className="mobile-car-image-container"
+        >
+          <div className="mobile-images">
+            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+            <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
+            <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
+          </div>
+        </div>
       <div
         className="car-image-container"
         style={{

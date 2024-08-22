@@ -351,8 +351,16 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
+.mobile-images {
+  display:none;
+}
+
 .value-form-submit-mobile {
   display: none;
+}
+
+.mobile-car-image-container {
+  display:none;
 }
 
 @media (max-width: 64rem) {
@@ -570,5 +578,27 @@ input::-webkit-inner-spin-button {
 
   .mobile-transmissionn::first-letter {
     text-transform: lowercase;
+  }
+
+  .mobile-images {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:0.5rem;
+    width:100%;
+  }
+
+  .mobile-images img {
+    border-radius: 10px;
+    width:100%;
+  }
+
+  .car-image-container {
+    display:none;
+  }
+
+  .mobile-car-image-container {
+    display:block;
+    padding:0;
+    min-height:0;
   }
 }
