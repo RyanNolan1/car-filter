@@ -118,11 +118,15 @@ function Car({ carObj }) {
           </button>
         </div>
         <div className="car-payment-container">
+        <div className="mobile-car-payment-container">
+        <p className="mobile-key-features">{carObj.key_features[0] + " | "} {carObj.key_features[1]}</p>
           <p>
             <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
             /mo ({carObj.monthly_finance_type})
           </p>
+          </div>
           <div className="price-calculate-container">
+            <div className="price-container">
             <div
               className={
                 carObj.original_price === carObj.price
@@ -148,6 +152,8 @@ function Car({ carObj }) {
               >
                 £{carObj.price}
               </p>
+              </div>
+              <p className="mobile-key-features">{carObj.key_features[2] + " | "} {carObj.key_features[3]}</p>
             </div>
             <button className="calculate-finance">Calculate Finance</button>
           </div>
