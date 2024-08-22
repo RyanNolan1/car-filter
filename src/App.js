@@ -108,7 +108,9 @@ function Car({ carObj }) {
             </p>
             <p className="derivative">{carObj.derivative}</p>
           </div>
-          <p className="mobile-classification">{carObj.advert_classification}</p>
+          <p className="mobile-classification">
+            {carObj.advert_classification}
+          </p>
           <button onClick={handleToggle} className="star-button">
             <img
               className="star"
@@ -118,42 +120,52 @@ function Car({ carObj }) {
           </button>
         </div>
         <div className="car-payment-container">
-        <div className="mobile-car-payment-container">
-        <p className="mobile-key-features">{carObj.key_features[0]} <span style={{color:"#D1D6E0"}}>|</span> {carObj.key_features[1]}</p>
-          <p>
-            <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
-            /mo ({carObj.monthly_finance_type})
-          </p>
+          <div className="mobile-car-payment-container">
+            <p className="mobile-key-features">
+              {carObj.key_features[0]}{" "}
+              <span style={{ color: "#D1D6E0" }}>|</span>{" "}
+              {carObj.key_features[1]}
+            </p>
+            <p>
+              <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
+              /mo ({carObj.monthly_finance_type})
+            </p>
           </div>
           <div className="price-calculate-container">
             <div className="price-container">
-            <div
-              className={
-                carObj.original_price === carObj.price
-                  ? "car-cost-container"
-                  : "car-cost-container-reverse"
-              }
-            >
-              <p
+              <div
                 className={
                   carObj.original_price === carObj.price
-                    ? "car-cost-hidden"
-                    : "original-price-discount"
+                    ? "car-cost-container"
+                    : "car-cost-container-reverse"
                 }
               >
-                £{carObj.original_price}
-              </p>
-              <p
-                className={
-                  carObj.original_price === carObj.price
-                    ? "car-cost"
-                    : "price-discount"
-                }
-              >
-                £{carObj.price}
-              </p>
+                <p
+                  className={
+                    carObj.original_price === carObj.price
+                      ? "car-cost-hidden"
+                      : "original-price-discount"
+                  }
+                >
+                  £{carObj.original_price}
+                </p>
+                <p
+                  className={
+                    carObj.original_price === carObj.price
+                      ? "car-cost"
+                      : "price-discount"
+                  }
+                >
+                  £{carObj.price}
+                </p>
               </div>
-              <p className="mobile-key-features">{carObj.key_features[2]}  <span style={{color:"#D1D6E0"}}>|</span> {carObj.key_features[3]}</p>
+              <p className="mobile-key-features">
+                <span className="mobile-transmission">
+                  {capitaliseFirstLetter(carObj.key_features[2])}
+                </span>{" "}
+                <span style={{ color: "#D1D6E0" }}>|</span>{" "}
+                {carObj.key_features[3]}
+              </p>
             </div>
             <button className="calculate-finance">Calculate Finance</button>
           </div>
@@ -161,6 +173,11 @@ function Car({ carObj }) {
       </div>
     </div>
   );
+}
+
+function capitaliseFirstLetter(string) {
+  string = string.toLowerCase();
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 function Filter({
@@ -374,7 +391,11 @@ function ValueForm() {
     <div className="value-form-container">
       <div className="value-form-top-container">
         <h1>Value your car</h1>
-        <p>Find out <span className="value-form-text">the value of your car</span> in just a few minutes</p>
+        <p>
+          Find out{" "}
+          <span className="value-form-text">the value of your car</span> in just
+          a few minutes
+        </p>
       </div>
       <form className="value-form">
         <label className="form-label">
@@ -405,7 +426,7 @@ function ValueForm() {
           type="submit"
           value="Value my car"
         />
-                <input
+        <input
           className="value-form-submit-mobile"
           type="submit"
           value="Get valuation"
