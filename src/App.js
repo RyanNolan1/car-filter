@@ -48,9 +48,17 @@ function App() {
         onSetClassification={setClassification}
       />
       <ul className="car-grid">
-        {cars.map((car) => (
-          <Car carObj={car} key={car.vehicle_id} />
-        ))}
+        {cars.map((car, index) => {
+          if (index === 4) {
+            return (
+              <>
+                <ValueForm key="value-form" />
+                <Car carObj={car} key={car.vehicle_id} />
+              </>
+            );
+          }
+          return <Car carObj={car} key={car.vehicle_id} />;
+        })}
       </ul>
       <Footer
         activePage={activePage}
@@ -196,18 +204,18 @@ function Filter({
 }
 
 function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
-
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: "smooth",
     });
   };
 
-
   return (
     <footer>
-      <button  onClick={scrollToTop} className="back-to-top-button">Back to top</button>
+      <button onClick={scrollToTop} className="back-to-top-button">
+        Back to top
+      </button>
       <div className="pagination">
         <button
           className="pagination-button"
@@ -258,7 +266,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
         >
           &rarr;
         </button>
-      <button
+        <button
           className="pagination-button"
           onClick={() => {
             if (activePage <= 2) {
@@ -275,6 +283,32 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
         <option value="highest-price">Highest price</option>
       </select>
     </footer>
+  );
+}
+
+function ValueForm() {
+  return (
+    <div className="value-form-container">
+      <div className="value-form-top-container">
+        <h1>Value your car</h1>
+        <p>Find out the value of your car in just a few minutes</p>
+      </div>
+      <form className="value-form">
+        <label class="form-label">
+          <p className="input-title">VRM<span class="asterisk">*</span></p>
+          <input maxlength="10" className="form-input" type="text" name="VRM" placeholder="Enter VRM" />
+        </label>
+        <label class="form-label">
+          <p className="input-title">Mileage<span>*</span></p>
+          <input className="form-input" type="number" name="Mileage" placeholder="Enter mileage" />
+        </label>
+        <input
+          className="value-form-submit"
+          type="submit"
+          value="Value my car"
+        />
+      </form>
+    </div>
   );
 }
 
