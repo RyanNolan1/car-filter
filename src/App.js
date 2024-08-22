@@ -60,15 +60,11 @@ function App() {
         onSetClassification={setClassification}
       />
       <ul className="car-grid">
-        {cars.map((car, index) => {
-          if (index === 4) {
-            return (
-              <>
-                <ValueForm key="value-form" />
-                <Car carObj={car} key={car.vehicle_id} />
-              </>
-            );
-          }
+        {cars.slice(0, 4).map((car) => {
+          return <Car carObj={car} key={car.vehicle_id} />;
+        })}
+        <ValueForm key="value-form" />
+        {cars.slice(4).map((car) => {
           return <Car carObj={car} key={car.vehicle_id} />;
         })}
       </ul>
@@ -303,13 +299,15 @@ function MobileFilter({
   onSetClassification,
   cars,
   onHandleSetActiveButton,
-  totalCars
+  totalCars,
 }) {
   return (
     <nav className="mobile-filter">
       <div className="mobile-car-count-buttons">
         <button
-          className={activeButton === 0 ? "mobile-active-button" : "mobile-filter-button"}
+          className={
+            activeButton === 0 ? "mobile-active-button" : "mobile-filter-button"
+          }
           onClick={() => {
             onHandleSetActiveButton(0);
             onSetClassification("All");
@@ -318,7 +316,9 @@ function MobileFilter({
           All
         </button>
         <button
-          className={activeButton === 1 ? "mobile-active-button" : "mobile-filter-button"}
+          className={
+            activeButton === 1 ? "mobile-active-button" : "mobile-filter-button"
+          }
           onClick={() => {
             onHandleSetActiveButton(1);
             onSetClassification("Used");
@@ -327,7 +327,9 @@ function MobileFilter({
           Used
         </button>
         <button
-          className={activeButton === 2 ? "mobile-active-button" : "mobile-filter-button"}
+          className={
+            activeButton === 2 ? "mobile-active-button" : "mobile-filter-button"
+          }
           onClick={() => {
             onHandleSetActiveButton(2);
             onSetClassification("New");
@@ -336,7 +338,9 @@ function MobileFilter({
           New
         </button>
         <button
-          className={activeButton === 3 ? "mobile-active-button" : "mobile-filter-button"}
+          className={
+            activeButton === 3 ? "mobile-active-button" : "mobile-filter-button"
+          }
           onClick={() => {
             onHandleSetActiveButton(3);
             onSetClassification("Offers");
@@ -346,11 +350,13 @@ function MobileFilter({
         </button>
       </div>
       <div className="mobile-car-count-sort">
-        <p className="mobile-car-totals">Showing {cars.length} of {totalCars} cars</p>
-      <select className="sort-dropdown">
-        <option value="lowest-price">Lowest price</option>
-        <option value="highest-price">Highest price</option>
-      </select>
+        <p className="mobile-car-totals">
+          Showing {cars.length} of {totalCars} cars
+        </p>
+        <select className="sort-dropdown">
+          <option value="lowest-price">Lowest price</option>
+          <option value="highest-price">Highest price</option>
+        </select>
       </div>
     </nav>
   );
