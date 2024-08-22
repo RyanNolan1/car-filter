@@ -9,6 +9,7 @@ function App() {
   const [activeButton, setActiveButton] = useState(0);
   const [activePage, setActivePage] = useState(1);
   const [page, setPage] = useState(1);
+  const [totalCars, setTotalCars] = useState([]);
 
   function handlePage(pageNumber) {
     setPage(pageNumber);
@@ -29,6 +30,10 @@ function App() {
       )
         .then((res) => res.json())
         .then((data) => {
+          setTotalCars(data.meta.total);
+          return data;
+        })
+        .then((data) => {
           let carsObj = data.data;
           if (classification === "Offers") {
             carsObj = carsObj.filter((car) => car.original_price !== car.price);
@@ -42,6 +47,7 @@ function App() {
   return (
     <div>
       <MobileFilter
+        totalCars={totalCars}
         activeButton={activeButton}
         onHandleSetActiveButton={handleSetActiveButton}
         cars={cars}
@@ -297,6 +303,7 @@ function MobileFilter({
   onSetClassification,
   cars,
   onHandleSetActiveButton,
+  totalCars
 }) {
   return (
     <nav className="mobile-filter">
@@ -339,7 +346,7 @@ function MobileFilter({
         </button>
       </div>
       <div className="mobile-car-count-sort">
-        <p className="mobile-car-totals">Showing {cars.length} Cars</p>
+        <p className="mobile-car-totals">Showing {cars.length} of {totalCars} cars</p>
       <select className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
         <option value="highest-price">Highest price</option>
