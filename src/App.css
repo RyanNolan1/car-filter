@@ -377,10 +377,6 @@ input::-webkit-inner-spin-button {
     display:none;
   }
 
-  footer {
-    display:none;
-  }
-
   .sort-dropdown {
     background-color:rgba(255, 255, 255, 0);
   }
@@ -418,8 +414,29 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     padding:1rem 0;
   }
-
-  .sort-dropdown {
+  
+  footer .sort-dropdown {
+    display:none;
     color:black;
+  }
+
+  footer {
+    flex-direction: column-reverse;
+    gap:2rem;
+  }
+
+  .pagination-button,
+  .active-button {
+    width:100%;
+    min-height: 1.875rem;
+  }
+
+  .pagination {
+    gap:0.25rem;
+    width:100%;
+  }
+
+  .back-to-top-button {
+    font-size:1rem;
   }
 }
