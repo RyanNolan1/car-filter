@@ -119,7 +119,7 @@ function Car({ carObj }) {
         </div>
         <div className="car-payment-container">
         <div className="mobile-car-payment-container">
-        <p className="mobile-key-features">{carObj.key_features[0] + " | "} {carObj.key_features[1]}</p>
+        <p className="mobile-key-features">{carObj.key_features[0]} <span style={{color:"#D1D6E0"}}>|</span> {carObj.key_features[1]}</p>
           <p>
             <span className="monthly-payment">£{carObj.monthly_payment}</span>{" "}
             /mo ({carObj.monthly_finance_type})
@@ -153,7 +153,7 @@ function Car({ carObj }) {
                 £{carObj.price}
               </p>
               </div>
-              <p className="mobile-key-features">{carObj.key_features[2] + " | "} {carObj.key_features[3]}</p>
+              <p className="mobile-key-features">{carObj.key_features[2]}  <span style={{color:"#D1D6E0"}}>|</span> {carObj.key_features[3]}</p>
             </div>
             <button className="calculate-finance">Calculate Finance</button>
           </div>
@@ -374,7 +374,7 @@ function ValueForm() {
     <div className="value-form-container">
       <div className="value-form-top-container">
         <h1>Value your car</h1>
-        <p>Find out the value of your car in just a few minutes</p>
+        <p>Find out <span className="value-form-text">the value of your car</span> in just a few minutes</p>
       </div>
       <form className="value-form">
         <label className="form-label">
@@ -404,6 +404,11 @@ function ValueForm() {
           className="value-form-submit"
           type="submit"
           value="Value my car"
+        />
+                <input
+          className="value-form-submit-mobile"
+          type="submit"
+          value="Get valuation"
         />
       </form>
     </div>

@@ -355,6 +355,10 @@ input::-webkit-inner-spin-button {
   display: none;
 }
 
+.value-form-submit-mobile {
+  display: none;
+}
+
 @media (max-width: 64rem) {
   .car-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -362,6 +366,10 @@ input::-webkit-inner-spin-button {
   }
 
   .filter {
+    max-width: 41.8125rem;
+  }
+
+  footer {
     max-width: 41.8125rem;
   }
 }
@@ -482,17 +490,17 @@ input::-webkit-inner-spin-button {
     justify-content: space-between;
     align-items: center;
     font-size: 0.75rem;
-    padding-right:2.5rem;
+    padding-right: 2.5rem;
   }
 
   .mobile-car-payment-container span {
-    font-size:1rem;
+    font-size: 1rem;
   }
 
   .price-calculate-container {
-    padding-right:2.5rem;
+    padding-right: 2.5rem;
   }
-  
+
   .mobile-key-features {
     font-size: 0.75rem;
     color: #55595d;
@@ -512,6 +520,67 @@ input::-webkit-inner-spin-button {
   }
 
   .monthly-payment {
-    font-weight:400;
+    font-weight: 400;
+  }
+
+  .value-form-container {
+    min-height: fit-content;
+    padding: 1rem;
+    gap: 1rem;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .value-form-top-container {
+    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .value-form-top-container h1 {
+    font-size: 1.125rem;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .value-form-top-container p {
+    text-align: left;
+    font-weight: 300;
+    font-size: 0.75rem;
+  }
+
+  .value-form {
+    align-items: end;
+    width: fit-content;
+  }
+
+  .value-form-submit {
+    display: none;
+  }
+
+  .value-form-submit-mobile {
+    display: block;
+  }
+
+  .form-label,
+  .form-input,
+  .input-title,
+  .form-input:focus {
+    display: none;
+  }
+
+  .value-form-text {
+    display: none;
+  }
+
+  .value-form-submit-mobile {
+    background-color: #7572ff;
+    border: none;
+    min-height: 3.125rem;
+    border-radius: 16px;
+    color: white;
+    cursor: pointer;
+    padding:1rem;
   }
 }
