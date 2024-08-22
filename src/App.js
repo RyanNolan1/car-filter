@@ -41,6 +41,12 @@ function App() {
 
   return (
     <div>
+      <MobileFilter
+        activeButton={activeButton}
+        onHandleSetActiveButton={handleSetActiveButton}
+        cars={cars}
+        onSetClassification={setClassification}
+      />
       <Filter
         activeButton={activeButton}
         onHandleSetActiveButton={handleSetActiveButton}
@@ -286,6 +292,63 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
   );
 }
 
+function MobileFilter({
+  activeButton,
+  onSetClassification,
+  cars,
+  onHandleSetActiveButton,
+}) {
+  return (
+    <nav className="mobile-filter">
+      <div className="mobile-car-count-buttons">
+        <button
+          className={activeButton === 0 ? "mobile-active-button" : "mobile-filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(0);
+            onSetClassification("All");
+          }}
+        >
+          All
+        </button>
+        <button
+          className={activeButton === 1 ? "mobile-active-button" : "mobile-filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(1);
+            onSetClassification("Used");
+          }}
+        >
+          Used
+        </button>
+        <button
+          className={activeButton === 2 ? "mobile-active-button" : "mobile-filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(2);
+            onSetClassification("New");
+          }}
+        >
+          New
+        </button>
+        <button
+          className={activeButton === 3 ? "mobile-active-button" : "mobile-filter-button"}
+          onClick={() => {
+            onHandleSetActiveButton(3);
+            onSetClassification("Offers");
+          }}
+        >
+          Offers
+        </button>
+      </div>
+      <div className="mobile-car-count-sort">
+        <p className="mobile-car-totals">Showing {cars.length} Cars</p>
+      <select className="sort-dropdown">
+        <option value="lowest-price">Lowest price</option>
+        <option value="highest-price">Highest price</option>
+      </select>
+      </div>
+    </nav>
+  );
+}
+
 function ValueForm() {
   return (
     <div className="value-form-container">
@@ -294,13 +357,28 @@ function ValueForm() {
         <p>Find out the value of your car in just a few minutes</p>
       </div>
       <form className="value-form">
-        <label class="form-label">
-          <p className="input-title">VRM<span class="asterisk">*</span></p>
-          <input maxlength="10" className="form-input" type="text" name="VRM" placeholder="Enter VRM" />
+        <label className="form-label">
+          <p className="input-title">
+            VRM<span className="asterisk">*</span>
+          </p>
+          <input
+            maxlength="10"
+            className="form-input"
+            type="text"
+            name="VRM"
+            placeholder="Enter VRM"
+          />
         </label>
-        <label class="form-label">
-          <p className="input-title">Mileage<span>*</span></p>
-          <input className="form-input" type="number" name="Mileage" placeholder="Enter mileage" />
+        <label className="form-label">
+          <p className="input-title">
+            Mileage<span>*</span>
+          </p>
+          <input
+            className="form-input"
+            type="number"
+            name="Mileage"
+            placeholder="Enter mileage"
+          />
         </label>
         <input
           className="value-form-submit"
