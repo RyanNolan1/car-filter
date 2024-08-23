@@ -13,6 +13,14 @@ function App() {
   const [activePage, setActivePage] = useState(1);
   const [page, setPage] = useState(1);
   const [totalCars, setTotalCars] = useState([]);
+  const [sort, setSort] = useState("lowest-price");
+  
+  const handleSetSort = (event) => {
+    setSort(event.target.value);
+    let carsCopy = [...cars];
+    carsCopy.sort(( a, b) => sort === "lowest-price" ? b.monthly_payment - a.monthly_payment : a.monthly_payment - b.monthly_payment );
+    setCars(carsCopy);
+  };
 
   function handlePage(pageNumber) {
     setPage(pageNumber);
@@ -50,6 +58,8 @@ function App() {
   return (
     <div>
       <MobileFilter
+        sort={sort}
+        onHandleSetSort={handleSetSort}
         totalCars={totalCars}
         activeButton={activeButton}
         onHandleSetActiveButton={handleSetActiveButton}
@@ -57,6 +67,8 @@ function App() {
         onSetClassification={setClassification}
       />
       <Filter
+        sort={sort}
+        onHandleSetSort={handleSetSort}
         activeButton={activeButton}
         onHandleSetActiveButton={handleSetActiveButton}
         cars={cars}
@@ -72,6 +84,8 @@ function App() {
         })}
       </ul>
       <Footer
+        sort={sort}
+        onHandleSetSort={handleSetSort}
         activePage={activePage}
         onHandleSetActivePage={handleSetActivePage}
         onHandlePage={handlePage}
@@ -89,18 +103,16 @@ function Car({ carObj }) {
 
   return (
     <div className="car">
-        <div
-          className="mobile-car-image-container"
-        >
-          <div className="mobile-images">
-            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
-            <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
-            <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
-            <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
-            <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
-            <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
-          </div>
+      <div className="mobile-car-image-container">
+        <div className="mobile-images">
+          <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+          <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
+          <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
+          <img src={carObj.media_urls[0].thumb} alt={carObj.name} />
+          <img src={carObj.media_urls[1].thumb} alt={carObj.name} />
+          <img src={carObj.media_urls[2].thumb} alt={carObj.name} />
         </div>
+      </div>
       <div
         className="car-image-container"
         style={{
@@ -200,6 +212,8 @@ function Filter({
   onSetClassification,
   cars,
   onHandleSetActiveButton,
+  onHandleSetSort,
+  sort,
 }) {
   return (
     <nav className="filter">
@@ -242,7 +256,7 @@ function Filter({
           Offers
         </button>
       </div>
-      <select className="sort-dropdown">
+      <select value={sort} onChange={onHandleSetSort} className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
         <option value="highest-price">Highest price</option>
       </select>
@@ -250,7 +264,13 @@ function Filter({
   );
 }
 
-function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
+function Footer({
+  onHandlePage,
+  onHandleSetActivePage,
+  activePage,
+  sort,
+  onHandleSetSort,
+}) {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -273,7 +293,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          <img src={ leftArrow } alt="left arrow icon" />
+          <img src={leftArrow} alt="left arrow icon" />
         </button>
         <button
           className={activePage === 1 ? "active-button" : "pagination-button"}
@@ -311,7 +331,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          <img src={ rightArrow } alt="right arrow icon" />
+          <img src={rightArrow} alt="right arrow icon" />
         </button>
         <button
           className="pagination-button"
@@ -322,10 +342,10 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          <img src={ doubleRightArrow } alt="double right arrow icon" />
+          <img src={doubleRightArrow} alt="double right arrow icon" />
         </button>
       </div>
-      <select className="sort-dropdown">
+      <select value={sort} onChange={onHandleSetSort} className="sort-dropdown">
         <option value="lowest-price">Lowest price</option>
         <option value="highest-price">Highest price</option>
       </select>
@@ -339,6 +359,8 @@ function MobileFilter({
   cars,
   onHandleSetActiveButton,
   totalCars,
+  onHandleSetSort,
+  sort,
 }) {
   return (
     <nav className="mobile-filter">
@@ -392,7 +414,11 @@ function MobileFilter({
         <p className="mobile-car-totals">
           Showing {cars.length} of {totalCars} cars
         </p>
-        <select className="sort-dropdown">
+        <select
+          value={sort}
+          onChange={onHandleSetSort}
+          className="sort-dropdown"
+        >
           <option value="lowest-price">Lowest price</option>
           <option value="highest-price">Highest price</option>
         </select>
