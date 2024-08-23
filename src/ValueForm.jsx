@@ -3,7 +3,7 @@ export default function ValueForm() {
       <div className="value-form-container">
         <div className="value-form-top-container">
           <h1>Value your car</h1>
-          <p>Find out the value of your car in just a few minutes</p>
+          <p>Find out the value <span className="value-form-text"> of your car </span> in just a few minutes</p>
         </div>
         <form className="value-form">
           <label class="form-label">
@@ -18,6 +18,11 @@ export default function ValueForm() {
             className="value-form-submit"
             type="submit"
             value="Value my car"
+          />
+                    <input
+            className="value-form-submit-mobile"
+            type="submit"
+            value="Get valuation"
           />
         </form>
       </div>
