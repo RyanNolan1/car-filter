@@ -2,6 +2,9 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import starOutline from "./img/star-outline.svg";
 import starFull from "./img/star-full.svg";
+import rightArrow from "./img/right-arrow.svg";
+import leftArrow from "./img/left-arrow.svg";
+import doubleRightArrow from "./img/double-right-arrow.svg";
 
 function App() {
   const [cars, setCars] = useState([]);
@@ -270,7 +273,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          &larr;
+          <img src={ leftArrow } alt="left arrow icon" />
         </button>
         <button
           className={activePage === 1 ? "active-button" : "pagination-button"}
@@ -308,7 +311,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          &rarr;
+          <img src={ rightArrow } alt="right arrow icon" />
         </button>
         <button
           className="pagination-button"
@@ -319,7 +322,7 @@ function Footer({ onHandlePage, onHandleSetActivePage, activePage }) {
             }
           }}
         >
-          &raquo;
+          <img src={ doubleRightArrow } alt="double right arrow icon" />
         </button>
       </div>
       <select className="sort-dropdown">

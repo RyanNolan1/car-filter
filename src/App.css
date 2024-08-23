@@ -194,6 +194,9 @@ button {
   width: fit-content;
   font-weight: 400;
   transition: 0.3s;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .filter-button:hover {
