@@ -188,7 +188,7 @@ button {
 .filter-button {
   color: #55595d;
   background: none;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 1rem;
   border-radius: 10px;
   border: 1px solid #d1d6e0;
   width: fit-content;
@@ -208,7 +208,7 @@ button {
 .active-button {
   color: white;
   background-color: #7572ff;
-  padding: 0.25rem 0.75rem;
+  padding: 0.25rem 1rem;
   border-radius: 10px;
   border: 1px solid #d1d6e0;
   font-weight: 400;
@@ -246,7 +246,7 @@ footer {
 
 .pagination {
   display: flex;
-  gap: 1rem;
+  gap: 0.25rem;
 }
 
 .back-to-top-button {
